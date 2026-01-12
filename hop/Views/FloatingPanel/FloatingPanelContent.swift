@@ -13,11 +13,11 @@ struct FloatingPanelContent: View {
             HStack(spacing: 12) {
                 Image(systemName: "magnifyingglass")
                     .foregroundStyle(.secondary)
-                    .font(.title2)
+                    .font(.title)
 
                 TextField("Search links...", text: $appState.searchQuery)
                     .textFieldStyle(.plain)
-                    .font(.title2)
+                    .font(.title)
                     .focused($isSearchFocused)
                     .onSubmit {
                         openSelectedLink()
@@ -119,14 +119,14 @@ struct LinkRow: View {
 
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(link.name)
-                    .font(.body)
+                    .font(.title3)
                     .fontWeight(isSelected ? .medium : .regular)
 
                 if let category = category {
                     Text(category)
-                        .font(.caption)
+                        .font(.body)
                         .foregroundStyle(.secondary)
                 }
             }
@@ -134,12 +134,12 @@ struct LinkRow: View {
             Spacer()
 
             Text(link.url)
-                .font(.caption)
+                .font(.callout)
                 .foregroundStyle(.tertiary)
                 .lineLimit(1)
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 10)
+        .padding(.vertical, 12)
         .background(isSelected ? Color.accentColor.opacity(0.2) : Color.clear)
         .contentShape(Rectangle())
     }
